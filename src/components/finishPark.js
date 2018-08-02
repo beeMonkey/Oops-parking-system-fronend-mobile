@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavBar, List } from 'antd-mobile';
+import { NavBar, List, Icon } from 'antd-mobile';
 const Item = List.Item;
 class FinishPark extends Component {
     constructor(props) {
@@ -11,7 +11,10 @@ class FinishPark extends Component {
         const {match, history} = this.props
         return (
             <div>
-                <NavBar mode="dark">停车地点</NavBar>
+                <NavBar mode="dark"
+                icon={<Icon type="left" />}
+                onLeftClick={() => history.push(`/home/parkUnparkTask`)}
+                >停车地点</NavBar>
                 <List className="my-list">
                     <Item
                         arrow="horizontal"

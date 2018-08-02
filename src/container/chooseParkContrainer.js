@@ -3,16 +3,18 @@ import choosePark from "../components/choosePark"
 import Api from "../API/parkingLotAPI"
 const mapStateToProps = (state, ownProps) => {
     return {
-        ordersList: state.orderReducers
+        parkinglots : state.parkingLotReducers
     }
 
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
-   
     return {
-        onGetMyOrders:()=>{
-            Api.getBoyOrders(dispatch)
-        }
+        onGetParkinglots:()=>{
+            Api.getBoyParkinglots(dispatch)
+        },
+        onPark:(orderId, lotId)=>{
+            Api.park(orderId, lotId, dispatch)
+        },
     }
 }
 
