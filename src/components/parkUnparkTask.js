@@ -17,7 +17,7 @@ class ParkUnparkTask extends Component {
         const { history } = this.props;
         console.log(this.props.ordersList)
         const parkList = this.props.ordersList.filter(order=>
-            order.type == "存车"
+            order.type == "存车" && order.status=="停取中"
         )
         .map(order=>{
             return (<Item
@@ -33,7 +33,7 @@ class ParkUnparkTask extends Component {
         });
 
         const unParkList = this.props.ordersList.filter(order=>
-            order.type == "取车"
+            order.type == "取车"&& order.status=="停取中"
         )
         .map(order=>{
             return (<Item

@@ -64,12 +64,14 @@ export default {
         }),
 
     "park":(orderId, lotId, dispatch)=>
-    
+
     axios.patch(`${requestUrls.orders}/${orderId}/park?parkingLotId=${lotId}`)
         .then(res=>{
             if(res.status == 200){
                 axios.put(`${requestUrls.parkinglots}/${lotId}/park`)
                 .then(res=>{
+                    console.log(res.data)
+                    dispatch(actions.modifyParkinglot(res.data))
                 })
                 .catch(error=>{
                 })

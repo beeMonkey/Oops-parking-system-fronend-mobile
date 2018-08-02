@@ -21,7 +21,10 @@ class ChoosePark extends Component {
                         arrow="horizontal"
                         thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
                         multipleLine
-                        onClick={() => {this.props.onPark(orderId, lot.id) }}
+                        onClick={() => {
+                            this.props.onPark(orderId, lot.id)
+                            history.push("/home/orders")
+                        }}
                     >
                         {lot.name}({lot.countOfCars}/{lot.size})
                     </Item> )
