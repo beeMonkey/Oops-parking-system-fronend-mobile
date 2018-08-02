@@ -12,7 +12,7 @@ componentDidMount(){
 }
   render(){
     return (
-      <div>
+      <div >
         <Route path="/home" component={Home} />
         <Route path="/login" component={Login} />
         {/* <Route path="/home/orders" component={Home} /> */}
