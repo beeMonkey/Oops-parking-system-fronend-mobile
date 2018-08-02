@@ -8,6 +8,8 @@ class FinishPark extends Component {
         }
     }
     render() {
+        const {match} = this.props
+        console.log(match.params.id)
         const { history } = this.props;
         return (
             <div>

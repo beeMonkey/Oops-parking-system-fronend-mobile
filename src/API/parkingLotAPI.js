@@ -11,5 +11,12 @@ export default {
         .catch((error) => {
             console.log(error);
         }),
-    
+    "getBoyOrders":(dispatch) => 
+    axios.get(requestUrls.boyOrders)
+    .then((res) => {
+        dispatch(actions.allOrders(res.data))
+    })
+    .catch((error) => {
+        console.log(error);
+    }),
 }
