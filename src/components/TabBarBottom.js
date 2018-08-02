@@ -41,7 +41,7 @@ class TabBarBottom extends Component {
             />
             }
             selected={this.state.selectedTab === 'blueTab'}
-            badge={1}
+            // badge={1}
             {...props}
             onPress={() => {
               this.renderContent('orders', 'blueTab')

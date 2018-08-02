@@ -39,10 +39,10 @@ class LoginForm extends Component {
 
                 <NavBar mode="dark">登录</NavBar>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                    <p style={{ marginTop:"20%",color:"#108ee9" }}>欢迎登陆停车系统</p>
+                    <p style={{ marginTop:"20%",color:"#108ee9",fontSize:"1.5rem" }}>欢迎登陆停车系统</p>
 
                     <div style={{ marginTop: "10%", padding: "5%", backgroundColor: "#f8f8f8" }}>
-                        <InputItem style={{ backgroundColor: "" }}
+                        <InputItem  style={{ backgroundColor: "" }}
                             {...getFieldProps('account')}
                             clear
                             placeholder="请输入账号"
