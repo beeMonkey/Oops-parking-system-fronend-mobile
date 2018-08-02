@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavBar, List ,Toast} from 'antd-mobile';
+import { NavBar, List, Toast } from 'antd-mobile';
 import Api from "../API/parkingLotAPI"
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -9,7 +9,7 @@ class Orders extends Component {
         this.state = {
         }
     }
-    componentWillMount(){
+    componentWillMount() {
         this.props.onGetAllOrders();
     }
     jump(id) {
@@ -27,18 +27,24 @@ class Orders extends Component {
                 // icon={<Icon type="left" />}
                 // onLeftClick={() => console.log('onLeftClick')}
                 >订单</NavBar>
-                <List className="my-list">
-                    {items.map(item=>{
-                        return <Item
-                        arrow="horizontal"
-                        thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
-                        multipleLine
-                        extra="抢单"
-                        onClick={() => { Toast.success("抢单成功"); this.jump(item.id) }}
-                    >
-                        订单{item.id} <Brief>{item.carId}，停车时间</Brief>
-                    </Item>})}
-                </List>
+                {items.length>0 &&
+                    <List className="my-list">
+                        {items.map(item => {
+                            return <Item
+                                arrow="horizontal"
+                                thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
+                                multipleLine
+                                extra="抢单"
+                                onClick={() => { this.jump(item.id) }}
+                            >
+                                订单{item.id} <Brief>{item.carId}，停车时间</Brief>
+                            </Item>
+                        })}
+                    </List>
+                }
+                {items.length===0 &&
+                    <p style={{marginTop:"60%",textAlign:"center",fontSize:"2rem"}}>暂无可抢订单</p>
+                }
             </div>
         );
     }
