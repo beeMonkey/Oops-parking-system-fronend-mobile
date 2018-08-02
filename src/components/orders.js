@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavBar, List } from 'antd-mobile';
+import { NavBar, List ,Toast} from 'antd-mobile';
 import Api from "../API/parkingLotAPI"
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -12,10 +12,11 @@ class Orders extends Component {
     componentWillMount(){
         this.props.onGetAllOrders();
     }
-    jump(id,boyId) {
-        const { history } = this.props;
-        Api.patchOrderStatus(id,boyId);
-        history.push("/home/parkUnparkTask")
+    jump(id) {
+        //const { history } = this.props;
+        this.props.onPatchOrder(id);
+        // this.props.onGetAllOrders();
+        //history.push("/home/parkUnparkTask")
     }
     render() {
         const items = this.props.ordersList;
@@ -33,7 +34,7 @@ class Orders extends Component {
                         thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
                         multipleLine
                         extra="抢单"
-                        onClick={() => { alert("抢单成功"); this.jump(item.id,2) }}
+                        onClick={() => { Toast.success("抢单成功"); this.jump(item.id) }}
                     >
                         订单{item.id} <Brief>{item.carId}，停车时间</Brief>
                     </Item>})}
