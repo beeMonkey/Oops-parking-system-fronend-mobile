@@ -20,7 +20,7 @@ class LoginForm extends Component {
             if(res.status===200){
                 Toast.info('登录成功');
                 localStorage.setItem("access_token", res.data.token);
-
+                localStorage.setItem("id", res.data.id);
                 const {history}=this.props;
                 history.push("/home/orders")
             } else {
