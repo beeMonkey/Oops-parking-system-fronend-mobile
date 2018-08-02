@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { NavBar,Button, WhiteSpace} from 'antd-mobile';
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -9,7 +9,8 @@ class Login extends Component {
     render() {
         return (
             <div>
-                login page
+                 <NavBar mode="dark">登录页面</NavBar>
+                 <Button type="primary" onClick={() => alert("111")}>登录</Button><WhiteSpace />
             </div>
         );
     }
