@@ -19,6 +19,7 @@ export default {
     })
     .catch((error) => {
         console.log(error);
+    }),
     "patchOrderStatus":(id,boyId)=> axios.patch(requestUrls.orders+"/"+id+"?boyId="+boyId)
         .then((res)=>{
             console.log(res.data)
@@ -26,5 +27,4 @@ export default {
         .catch((error) => {
             console.log(error);
         }),
-    }),
 }
