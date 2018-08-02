@@ -7,5 +7,6 @@ export default {
     "orders":globalUrl + "orders",
     "boyOrders":globalUrl+ "orders/"+boyId,
     "parkingLotsDashboard":globalUrl+"parkinglots/dashboard",
-    "parkingLotCombineSearch":globalUrl+"parkinglots/combineSearch"
+    "parkingLotCombineSearch":globalUrl+"parkinglots/combineSearch",
+    "nohandleOrders":globalUrl + "orders/nohandle",
 }
