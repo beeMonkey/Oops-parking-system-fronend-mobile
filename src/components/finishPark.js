@@ -8,9 +8,7 @@ class FinishPark extends Component {
         }
     }
     render() {
-        const {match} = this.props
-        console.log(match.params.id)
-        const { history } = this.props;
+        const {match, history} = this.props
         return (
             <div>
                 <NavBar mode="dark">停车地点</NavBar>
@@ -19,7 +17,7 @@ class FinishPark extends Component {
                         arrow="horizontal"
                         thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
                         multipleLine
-                        onClick={() => {history.push("/home/choosePark") }}
+                        onClick={() => {history.push(`/home/choosePark/${match.params.id}`) }}
                     >
                         选择停车场
                     </Item>

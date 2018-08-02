@@ -15,6 +15,7 @@ class ParkUnparkTask extends Component {
     
     render() {
         const { history } = this.props;
+        console.log(this.props.ordersList)
         const parkList = this.props.ordersList.filter(order=>
             order.type == "存车"
         )

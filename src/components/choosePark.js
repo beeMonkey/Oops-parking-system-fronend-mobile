@@ -7,6 +7,9 @@ class ChoosePark extends Component {
         this.state = {
         }
     }
+    componentWillMount(){
+        
+    }
     render() {
         const { history } = this.props;
         
