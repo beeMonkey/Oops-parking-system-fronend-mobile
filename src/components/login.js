@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { List, InputItem, NavBar, Button, Toast } from 'antd-mobile';
 import axios from "axios"
+import "../css/LoginForm.css"
 import requestUrls from "../API/requestUrls"
 import { createForm } from 'rc-form';
 class LoginForm extends Component {
@@ -35,11 +36,11 @@ class LoginForm extends Component {
     render() {
         const { getFieldProps } = this.props.form;
         return (
-            <div >
+            <div className="nav">
 
                 <NavBar mode="dark">登录</NavBar>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                    <p style={{ marginTop:"20%",color:"#108ee9",fontSize:"1.5rem" }}>欢迎登陆停车系统</p>
+                    <p style={{ marginTop:"20%",color:"#108ee9",fontSize:"1.5rem" }}>欢迎登陆Oops停车系统</p>
 
                     <div style={{ marginTop: "10%", padding: "5%", backgroundColor: "#f8f8f8" }}>
                         <InputItem  style={{ backgroundColor: "" }}

@@ -1,3 +1,25 @@
 .InputItem{
   background-color: transparent;
 }
+.nav{
+  box-sizing: border-box;
+  overflow: hidden;
+  animation: change 1s forwards;
+}
+
+  @keyframes change{
+    0%{
+      transform: scale(0.5);  /*开始为原始大小*/
+  }
+  50%{
+      transform: scale(1.5);
+  }
+  100%{
+      transform: scale(1);
+  }
+}
+
+.InputItem>input{
+  background-color: #ffffff !important;
+
+}
