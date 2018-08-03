@@ -4,17 +4,41 @@ class TabBarBottom extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedTab: 'blueTab',
+      selectedTab: 'ordersTab',
     };
   }
-  renderContent(pageText, tab) {
+  componentWillMount() {
+    let path=this.props.location.pathname;
+    console.log(path)
+    if(path.indexOf("/home/orders")){
+      this.setState({
+        selectedTab: 'ordersTab',
+      });
+    }
+    if(path==="/home/parkUnparkTask"){
+      this.setState({
+        selectedTab: 'parkUnparkTaskTab',
+      });
+    }
+    if(path==="/home/history"){
+      this.setState({
+        selectedTab: 'historyTab',
+      });
+    }
+    if(path==="/home/profile"){
+      this.setState({
+        selectedTab: 'profileTab',
+      });
+    }
+  }
+ 
+  renderContent(pageText) {
     const { history } = this.props;
     //const history=this.props.history;
     //history.push("/home/orders")
     history.push("/home/" + pageText)
   }
   render() {
-    const { ...props } = this.props;
     return (
       <div style={{ position: 'fixed', bottom: 0, width: '100%' }}>
         {/* <div style={{ position: 'fixed', height: '100%', width: '100%', top:0 } }>  */}
@@ -40,13 +64,12 @@ class TabBarBottom extends Component {
             }}
             />
             }
-            selected={this.state.selectedTab === 'blueTab'}
-            badge={1}
-            {...props}
+            selected={this.state.selectedTab === 'ordersTab'}
+            // badge={1}
             onPress={() => {
-              this.renderContent('orders', 'blueTab')
+              this.renderContent('orders')
               this.setState({
-                selectedTab: 'blueTab',
+                selectedTab: 'ordersTab',
               });
             }}
             data-seed="logId"
@@ -73,16 +96,15 @@ class TabBarBottom extends Component {
             title="停取"
             key="Koubei"
             badge={'new'}
-            selected={this.state.selectedTab === 'redTab'}
+            selected={this.state.selectedTab === 'parkUnparkTaskTab'}
             onPress={() => {
-              this.renderContent('parkUnparkTask', 'redTab')
+              this.renderContent('parkUnparkTask')
               this.setState({
-                selectedTab: 'redTab',
+                selectedTab: 'parkUnparkTaskTab',
               });
             }}
             data-seed="logId1"
           >
-            {/* {this.renderContent('Koubei')} */}
           </TabBar.Item>
           <TabBar.Item
             icon={
@@ -104,31 +126,28 @@ class TabBarBottom extends Component {
             title="历史"
             key="Friend"
             dot
-            selected={this.state.selectedTab === 'greenTab'}
+            selected={this.state.selectedTab === 'historyTab'}
             onPress={() => {
               this.renderContent('history')
               this.setState({
-                selectedTab: 'greenTab',
+                selectedTab: 'historyTab',
               });
             }}
           >
-            {/* {this.renderContent('Friend')} */}
           </TabBar.Item>
           <TabBar.Item
-            // icon={<Icon type="user"/>}
             icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg' }}
             selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg' }}
             title="个人"
             key="my"
-            selected={this.state.selectedTab === 'yellowTab'}
+            selected={this.state.selectedTab === 'profileTab'}
             onPress={() => {
               this.renderContent('profile')
               this.setState({
-                selectedTab: 'yellowTab',
+                selectedTab: 'profileTab',
               });
             }}
           >
-            {/* {this.renderContent('My')} */}
           </TabBar.Item>
         </TabBar>
         {/* </div> */}

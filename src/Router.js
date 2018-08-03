@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import Orders from "./container/ordersContainer"
-import ParkUnparkTask from "./components/parkUnparkTask"
+import ParkUnparkTask from "./container/parkUnparkContainer"
 import TheHistory from "./components/theHistory"
 import Profile from "./components/profile"
 import FinishPark from "./components/finishPark"
-import ChoosePark from "./components/choosePark"
+import ChoosePark from "./container/chooseParkContrainer"
 import { Route } from "react-router-dom";
 class Router extends Component {
     constructor(props) {
@@ -21,9 +21,9 @@ class Router extends Component {
                 <Route path="/home/parkUnparkTask" component={ParkUnparkTask} />
                 <Route path="/home/history" component={TheHistory} />
                 <Route path="/home/profile" component={Profile} />
-                
-                <Route path="/home/finishPark" component={FinishPark} />
-                <Route path="/home/choosePark" component={ChoosePark} />
+
+                <Route path="/home/finishPark/:id" component={FinishPark} />
+                <Route path="/home/choosePark/:id" component={ChoosePark} />
             </div>
         );
     }

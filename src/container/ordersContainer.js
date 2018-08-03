@@ -8,10 +8,13 @@ const mapStateToProps = (state, ownProps) => {
 
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
-   
     return {
         onGetAllOrders:()=>{
             Api.getAllOrders(dispatch)
+        },
+        onPatchOrder:(id)=>{
+            console.log(id)
+            Api.patchOrderStatus(id,dispatch);
         }
     }
 }

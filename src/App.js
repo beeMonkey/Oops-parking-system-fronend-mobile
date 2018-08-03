@@ -3,21 +3,26 @@ import './App.css';
 import 'antd-mobile/dist/antd-mobile.css';
 import Login from './components/login';
 import Home from './components/home';
-import { Route } from "react-router-dom";
+import { Route,Redirect } from "react-router-dom";
 class App extends Component {
   constructor(props) {
     super(props)
   }
 componentDidMount(){
 }
+
   render(){
     return (
-      <div>
+      <div >
         <Route path="/home" component={Home} />
         <Route path="/login" component={Login} />
-        {/* <Route path="/home/orders" component={Home} /> */}
-        {/* <Login></Login>
-        <Home></Home> */}
+        {
+          !localStorage.getItem("access_token") && window.location.href.indexOf("/login")===-1&& < Redirect to="/login" />
+        }
+        {/* {
+
+          localStorage.getItem("access_token") && < Redirect to="/home/orders" />
+        } */}
       </div>
     )
   }

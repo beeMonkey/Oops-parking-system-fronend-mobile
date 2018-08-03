@@ -7,22 +7,36 @@ class ChoosePark extends Component {
         this.state = {
         }
     }
+    componentWillMount(){
+        this.props.onGetParkinglots();
+    }
     render() {
-        const { history } = this.props;
-        
-        return (
-            <div>
-                <NavBar  icon={<Icon type="left" />}
-                 onLeftClick={() => history.push("/home/finishPark")} mode="dark">停车地点</NavBar>
-                <List className="my-list">
+        const { match,  history } = this.props;
+        const orderId = match.params.id;
+        console.log(orderId)
+        const parkinglotlist = this.props.parkinglots.map(lot=>{
+            console.log(lot)
+                return (
                     <Item
                         arrow="horizontal"
                         thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
                         multipleLine
-                        onClick={() => { }}
+                        onClick={() => {
+                            this.props.onPark(orderId, lot.id)
+                            history.push("/home/parkUnparkTask")
+                        }}
                     >
-                        停车场A(10)
-                    </Item>
+                        {lot.name}({lot.countOfCars}/{lot.size})
+                    </Item> )
+        })
+
+
+        return (
+            <div>
+                <NavBar  icon={<Icon type="left" />}
+                 onLeftClick={() => history.push(`/home/finishPark/${orderId}`)} mode="dark">停车地点</NavBar>
+                <List className="my-list">
+                    {parkinglotlist}
                 </List>
             </div>
         );

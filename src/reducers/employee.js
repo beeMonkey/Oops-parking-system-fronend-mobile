@@ -13,7 +13,7 @@ export default (state=[], action) => {
 
         case types.ACCOUNTSTATUS:{
             let newState = [...state]
-            newState.find(i=>i.id == action.employeeItem.id).account_status = action.employeeItem.account_status
+            newState.find(i=>i.id === action.employeeItem.id).account_status = action.employeeItem.account_status
             return newState;
         }
         case types.UPDATEEMPLOYEE:{
