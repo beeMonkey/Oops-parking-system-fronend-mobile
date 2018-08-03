@@ -4,7 +4,7 @@ const boyId = "3"
 export default {
     "employees":globalUrl + "users",
     "boyParkingLots":globalUrl+"users/" +boyId+ "/parkinglots",
-    
+    "login":globalUrl+"login",
     "parkinglots":globalUrl+"parkinglots",
     "parkingLotsDashboard":globalUrl+"parkinglots/dashboard",
     "parkingLotCombineSearch":globalUrl+"parkinglots/combineSearch",
