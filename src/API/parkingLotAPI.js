@@ -37,22 +37,7 @@ export default {
         })
     },
 
-    "getBoyOrders":(dispatch) =>
-    axios.get(requestUrls.boyOrders)
-    .then((res) => {
-        dispatch(actions.allOrders(res.data))
-    })
-    .catch((error) => {
-        console.log(error);
-    }),
-    "patchOrderStatus":(id)=>
-        axios.patch(requestUrls.orders+"/"+id+"?boyId="+boyId)
-        .then((res)=>{
-            console.log(res.data)
-        })
-        .catch((error) => {
-            console.log(error);
-        }),
+    
 
     "getBoyParkinglots":(dispatch)=>
         axios.get(requestUrls.boyParkingLots)
