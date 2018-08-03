@@ -10,6 +10,7 @@ class App extends Component {
   }
 componentDidMount(){
 }
+
   render(){
     return (
       <div >
@@ -18,10 +19,10 @@ componentDidMount(){
         {
           !localStorage.getItem("access_token") && window.location.href.indexOf("/login")===-1&& < Redirect to="/login" />
         }
-        {
+        {/* {
 
           localStorage.getItem("access_token") && < Redirect to="/home/orders" />
-        }
+        } */}
       </div>
     )
   }
