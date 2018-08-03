@@ -23,7 +23,7 @@ class ChoosePark extends Component {
                         multipleLine
                         onClick={() => {
                             this.props.onPark(orderId, lot.id)
-                            history.push("/home/orders")
+                            history.push("/home/parkUnparkTask")
                         }}
                     >
                         {lot.name}({lot.countOfCars}/{lot.size})
