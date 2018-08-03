@@ -37,7 +37,6 @@ export default {
         })
     },
 
-    
 
     "getBoyParkinglots":(dispatch)=>
         axios.get(requestUrls.boyParkingLots)
@@ -64,5 +63,22 @@ export default {
         })
         .catch(error=>{
         })
+    },
+    "unParkCar":(orderId,parkingLotId,dispatch)=> {
+        console.log(requestUrls.parkinglots + "/" + orderId + "/park/" + parkingLotId);
+        axios.delete(requestUrls.parkinglots + "/" + orderId + "/park/" + parkingLotId)
+            .then((res) => {
+                console.log(res.data);
+                axios.get(requestUrls.boyOrders)
+                    .then((res) => {
+                        dispatch(actions.allOrders(res.data))
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    })
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 }

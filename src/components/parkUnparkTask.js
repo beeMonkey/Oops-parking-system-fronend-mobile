@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { NavBar, List } from 'antd-mobile';
+import { NavBar, List,Modal } from 'antd-mobile';
 const Item = List.Item;
 const Brief = Item.Brief;
+const alert = Modal.alert;
 class ParkUnparkTask extends Component {
     constructor(props) {
         super(props);
@@ -11,6 +12,11 @@ class ParkUnparkTask extends Component {
 
     componentWillMount(){
         this.props.onGetMyOrders();
+    }
+    unParkCar = (orderId,parkingLotId) => {
+console.log(orderId)
+        console.log(parkingLotId)
+        this.props.unParkCar(orderId,parkingLotId);
     }
     
     render() {
@@ -42,7 +48,12 @@ class ParkUnparkTask extends Component {
             thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
             multipleLine
             extra="详情"
-            //onClick={}
+            onClick={() =>
+                alert('Delete', '确定取车', [
+                    { text: 'Cancel', onPress: () => console.log('cancel') },
+                    { text: 'Ok', onPress: () => this.unParkCar(order.id,order.parkinglotId) },
+                ])
+            }
         >
             取车 <Brief>{order.carId}，停车时间</Brief>
         </Item>)

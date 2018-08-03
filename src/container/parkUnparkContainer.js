@@ -12,6 +12,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         onGetMyOrders:()=>{
             Api.getBoyOrders(dispatch)
+        },
+        unParkCar:(orderId,parkingLotId)=>{
+            Api.unParkCar(orderId,parkingLotId,dispatch)
         }
     }
 }
