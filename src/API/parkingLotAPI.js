@@ -64,7 +64,6 @@ export default {
         }),
 
     "park":(orderId, lotId, dispatch)=>
-
     axios.patch(`${requestUrls.orders}/${orderId}/park?parkingLotId=${lotId}`)
         .then(res=>{
             if(res.status == 200){
