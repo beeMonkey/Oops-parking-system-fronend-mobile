@@ -8,8 +8,7 @@ export default (state=[], action) => {
         case types.PATCHORDER:{
             let newState = [...state]
             return newState.filter(i=>i.id!==action.ordersItem.id)
-        }
-        
+        } 
         default:
             return state
     }

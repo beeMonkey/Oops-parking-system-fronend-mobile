@@ -2,7 +2,6 @@ import { connect } from 'react-redux'
 import orders from "../components/orders"
 import Api from "../API/parkingLotAPI"
 const mapStateToProps = (state, ownProps) => {
-    console.log(state)
     return {
         ordersList: state.orderReducers
     }

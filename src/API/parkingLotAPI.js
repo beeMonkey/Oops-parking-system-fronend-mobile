@@ -36,24 +36,7 @@ export default {
             console.log(error);
         })
     },
-    "getBoyOrders":(dispatch) => 
-    axios.get(requestUrls.boyOrders)
-    .then((res) => {
-        dispatch(actions.allOrders(res.data))
-    })
-    .catch((error) => {
-        console.log(error);
-    }),
-    "patchOrderStatus":(id)=> 
-        axios.patch(requestUrls.orders+"/"+id+"?boyId="+boyId)
-        .then((res)=>{
-            console.log(res.data)
-        })
-        .catch((error) => {
-            console.log(error);
-        }),
-
-    "getBoyParkinglots":(dispatch)=> 
+    "getBoyParkinglots":(dispatch)=>{ 
         axios.get(requestUrls.boyParkingLots)
         .then(res=>{
             console.log("-------"+JSON.stringify(res))
@@ -61,9 +44,9 @@ export default {
         })
         .catch(error=>{
             console.log(error)
-        }),
-
-    "park":(orderId, lotId, dispatch)=>
+        })
+    },
+    "park":(orderId, lotId, dispatch)=>{
     axios.patch(`${requestUrls.orders}/${orderId}/park?parkingLotId=${lotId}`)
         .then(res=>{
             if(res.status == 200){
@@ -78,4 +61,5 @@ export default {
         })
         .catch(error=>{
         })
+    }
 }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { NavBar, List, Toast } from 'antd-mobile';
-import Api from "../API/parkingLotAPI"
+import { NavBar, List} from 'antd-mobile';
 const Item = List.Item;
 const Brief = Item.Brief;
 class Orders extends Component {
@@ -24,8 +23,6 @@ class Orders extends Component {
             <div>
                 <NavBar
                     mode="dark"
-                // icon={<Icon type="left" />}
-                // onLeftClick={() => console.log('onLeftClick')}
                 >订单</NavBar>
                 {items.length>0 &&
                     <List className="my-list">
