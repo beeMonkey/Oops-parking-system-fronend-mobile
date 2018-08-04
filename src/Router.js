@@ -5,6 +5,7 @@ import TheHistory from "./components/theHistory"
 import Profile from "./components/profile"
 import FinishPark from "./components/finishPark"
 import ChoosePark from "./container/chooseParkContrainer"
+import ShowParkContaner from "./container/showParkContaner"
 import { Route } from "react-router-dom";
 class Router extends Component {
     constructor(props) {
@@ -21,7 +22,7 @@ class Router extends Component {
                 <Route path="/home/parkUnparkTask" component={ParkUnparkTask} />
                 <Route path="/home/history" component={TheHistory} />
                 <Route path="/home/profile" component={Profile} />
-
+                <Route path="/home/showPark" component={ShowParkContaner} />
                 <Route path="/home/finishPark/:id" component={FinishPark} />
                 <Route path="/home/choosePark/:id" component={ChoosePark} />
             </div>

@@ -21,9 +21,10 @@ class LoginForm extends Component {
             if(res.status===200){
                 Toast.info('登录成功');
                 localStorage.setItem("access_token", res.data.token);
+                axios.defaults.headers.common['authorization'] = res.data.token;
                 localStorage.setItem("id", res.data.id);
-                const {history}=this.props;
-                history.push("/home/orders")
+                this.getUserInfo(res.data.id)
+              
             } else {
                 Toast.info('未知异常！');
             }
@@ -32,7 +33,18 @@ class LoginForm extends Component {
             Toast.info('账号或密码错误！');
         })
     }
- 
+    getUserInfo = (id) => {
+
+        axios.get(requestUrls.employees + "/search?id=" + id)
+          .then((res) => {
+            localStorage.setItem("userInfo",JSON.stringify(res.data[0]));
+            const {history}=this.props;
+            history.push("/home/orders")
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+      }
     render() {
         const { getFieldProps } = this.props.form;
         return (
