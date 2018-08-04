@@ -6,7 +6,7 @@ import Access_token from "../constants/Access_Token"
 import {Modal} from "antd-mobile/lib/index";
 
 axios.defaults.headers.common['authorization'] = Access_token;
-const alert = Modal.alert;
+const boyId = 3
 export default {
     "getAllOrders": (dispatch) => {
         axios.defaults.headers.common['authorization'] = localStorage.getItem("access_token")
@@ -20,7 +20,7 @@ export default {
             })
     },
     "getBoyOrders": (dispatch) => {
-        axios.get(`${requestUrls.orders}/${localStorage.getItem("id")}`)
+        axios.get(requestUrls.boyOrders)
             .then((res) => {
                 dispatch(actions.allOrders(res.data))
             })
@@ -29,14 +29,14 @@ export default {
             })
     },
     "patchOrderStatus": (id, dispatch) => {
-        axios.patch(requestUrls.orders + "/" + id + "?boyId=" + localStorage.getItem("id"))
-            .then((res) => {
-                Toast.success("抢单成功");
-                dispatch(actions.patchOrder(res.data))
-            })
-            .catch((error) => {
-                console.log(error);
-            })
+        axios.patch(requestUrls.orders + "/" + id + "?boyId=" + boyId)
+        .then((res) => {
+            Toast.success("抢单成功");
+            dispatch(actions.patchOrder(res.data))
+        })
+        .catch((error) => {
+            console.log(error);
+        })
     },
 
 
@@ -90,9 +90,27 @@ export default {
         axios.get(`${requestUrls.orders}/complete/${localStorage.getItem("id")}`)
             .then((res) => {
                 dispatch(actions.allOrders(res.data))
+                axios.get(requestUrls.boyOrders)
+                    .then((res) => {
+                        dispatch(actions.allOrders(res.data))
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    })
             })
             .catch((error) => {
                 console.log(error);
             })
-    }
+    },
+    "isBoyParkinglotsFull":(id,dispatch)=>
+        axios.get(requestUrls.isBoyParkinglotsFull)
+        .then(res=>{
+            console.log("-------"+JSON.stringify(res))
+            //this.patchOrderStatus(id,dispatch)
+            this.a.patchOrderStatus(id,dispatch);
+        })
+        .catch(error=>{
+            Toast.success("停车场已满，无法抢单");
+            console.log(error)
+        }),
 }

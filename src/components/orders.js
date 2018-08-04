@@ -12,11 +12,16 @@ class Orders extends Component {
     componentWillMount() {
         this.props.onGetAllOrders();
     }
-    jump(id) {
-        this.props.onPatchOrder(id);
+    jump(orderId) {
+        //const { history } = this.props;
+        //Api.isBoyParkinglotsFull(id);
+         this.props.isBoyParkingLotsFull(orderId);
+         //this.props.onPatchOrder(id);
+        //history.push("/home/parkUnparkTask")
     }
     render() {
-        const items = this.props.ordersList;
+        const items = this.props.ordersList
+        
         return (
             <div>
                 <NavBar
@@ -27,12 +32,12 @@ class Orders extends Component {
                         {items.map(item => {
                             return <Item
                                 arrow="horizontal"
-                                thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
+                                thumb="../../images/carOrder.svg"
                                 multipleLine
                                 extra="抢单"
                                 onClick={() => { this.jump(item.id) }}
                             >
-                                订单{item.id} <Brief>{item.carId}，停车时间</Brief>
+                                订单{item.id} <Brief>{item.carId},{item.createdTime}</Brief>
                             </Item>
                         })}
                     </List>

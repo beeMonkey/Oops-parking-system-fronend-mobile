@@ -30,40 +30,39 @@ class ParkUnparkTask extends Component {
         const parkList = this.props.ordersList.filter(order =>
             order.type == "存车" && order.status == "停取中" && order.parkinglotId == null
         )
-            .map(order => {
-                return (<Item
-                    id={order.id}
-                    arrow="horizontal"
-                    thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
-                    multipleLine
-                    extra="详情"
-                    onClick={() => { history.push(`/home/finishPark/${order.id}`) }}
-                >
-                    停车<Brief>{order.carId},{order.createdTime}</Brief>
-
-                </Item>)
-            });
+        .map(order=>{
+            return (<Item
+            id={order.id}
+            arrow="horizontal"
+            thumb="../../images/parkCar.svg"
+            multipleLine
+            extra="详情"
+            onClick={() => {history.push(`/home/finishPark/${order.id}` ) }}
+        >
+            {order.carId}<Brief>停车时间</Brief>
+        </Item>)
+        });
 
         const unParkList = this.props.ordersList.filter(order =>
             order.type == "取车" && order.status == "停取中"
         )
-            .map(order => {
-                return (<Item
-                    id={order.id}
-                    arrow="horizontal"
-                    thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
-                    multipleLine
-                    extra="详情"
-                    onClick={() =>
-                        alert('', '确定取车', [
-                            { text: '取消', onPress: () => console.log('cancel') },
-                            { text: '确定', onPress: () => this.unParkCar(order.id, order.parkinglotId) },
-                        ])
-                    }
-                >
-                    取车 <Brief>{order.carId}，停车时间</Brief>
-                </Item>)
-            });
+        .map(order=>{
+            return (<Item
+            id={order.id}
+            arrow="horizontal"
+            thumb="../../images/unparkCar.svg"
+            multipleLine
+            extra="详情"
+            onClick={() =>
+                alert('Delete', '确定取车', [
+                    { text: 'Cancel', onPress: () => console.log('cancel') },
+                    { text: 'Ok', onPress: () => this.unParkCar(order.id,order.parkinglotId) },
+                ])
+            }
+        >
+            取车 <Brief>{order.carId}，停车时间</Brief>
+        </Item>)
+        });
         return (
             <div>
                 <NavBar mode="dark">停取列表</NavBar>

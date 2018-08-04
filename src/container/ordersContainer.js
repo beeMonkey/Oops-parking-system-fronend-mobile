@@ -15,6 +15,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         onPatchOrder:(id)=>{
             console.log(id)
             Api.patchOrderStatus(id,dispatch);
+        },
+        isBoyParkingLotsFull:(id)=>{
+            Api.isBoyParkinglotsFull(id,dispatch)
         }
     }
 }
