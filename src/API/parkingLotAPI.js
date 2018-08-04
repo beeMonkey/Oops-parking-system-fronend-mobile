@@ -3,8 +3,10 @@ import * as actions from '../actions'
 import requestUrls from "./requestUrls"
 import {Toast} from 'antd-mobile';
 import Access_token from "../constants/Access_Token"
+import {Modal} from "antd-mobile/lib/index";
 axios.defaults.headers.common['authorization'] = Access_token;
 const boyId = 3
+const alert = Modal.alert;
 export default {
     "getAllOrders": (dispatch) => {
         axios.defaults.headers.common['authorization'] = localStorage.getItem("access_token")
@@ -78,10 +80,12 @@ export default {
                     })
                     .catch((error) => {
                         console.log(error);
+                        alert("取车失败")
                     })
             })
             .catch((error) => {
                 console.log(error);
+                alert("取车失败")
             })
     }
 }
