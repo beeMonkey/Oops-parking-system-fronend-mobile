@@ -30,14 +30,14 @@ class Profile extends Component {
     }
 
     render() {
-        const {history} = this.props;
+        const { history } = this.props;
 
         const userInfo = this.state.userInfo
         return (
             <div type="flex">
                 <NavBar mode="dark">个人</NavBar>
                 <Item
-                    style={{marginTop:"1rem"}}
+                    style={{ marginTop: "1rem" }}
                     extra={userInfo.username}
                     thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
                     multipleLine
@@ -71,7 +71,8 @@ class Profile extends Component {
                     thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
                     multipleLine
                     extra="详情"
-                    onClick={() => {history.push("/home/showPark")
+                    onClick={() => {
+                        history.push("/home/showPark")
                     }}
                 >
                     停车场<Brief></Brief>
