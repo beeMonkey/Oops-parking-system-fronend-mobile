@@ -51,16 +51,16 @@ class TabBarBottom extends Component {
             title="抢单"
             key="Life"
             icon={<div style={{
-              width: '22px',
-              height: '22px',
-              background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat'
+              width: '25px',
+              height: '25px',
+              background: 'url(../../images/orderBlack1.svg) center center /  25px 25px no-repeat'
             }}
             />
             }
             selectedIcon={<div style={{
-              width: '22px',
-              height: '22px',
-              background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat'
+              width: '25px',
+              height: '25px',
+              background: 'url(../../images/orderBlue1.svg) center center /  25px 25px no-repeat'
             }}
             />
             }
@@ -79,23 +79,23 @@ class TabBarBottom extends Component {
           <TabBar.Item
             icon={
               <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat'
+                width: '25px',
+                height: '25px',
+                background: 'url(../../images/carBlack.svg) center center /  25px 25px no-repeat'
               }}
               />
             }
             selectedIcon={
               <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat'
+                width: '25px',
+                height: '25px',
+                background: 'url(../../images/carBlue.svg) center center /  25px 25px no-repeat'
               }}
               />
             }
             title="停取"
             key="Koubei"
-            badge={'new'}
+            //badge={'new'}
             selected={this.state.selectedTab === 'parkUnparkTaskTab'}
             onPress={() => {
               this.renderContent('parkUnparkTask')
@@ -109,23 +109,23 @@ class TabBarBottom extends Component {
           <TabBar.Item
             icon={
               <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg) center center /  21px 21px no-repeat'
+                width: '25px',
+                height: '25px',
+                background: 'url(../../images/historyBlack.svg) center center /  25px 25px no-repeat'
               }}
               />
             }
             selectedIcon={
               <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat'
+                width: '25px',
+                height: '25px',
+                background: 'url(../../images/historyBlue.svg) center center /  25px 25px no-repeat'
               }}
               />
             }
             title="历史"
             key="Friend"
-            dot
+            //dot
             selected={this.state.selectedTab === 'historyTab'}
             onPress={() => {
               this.renderContent('history')
@@ -136,8 +136,22 @@ class TabBarBottom extends Component {
           >
           </TabBar.Item>
           <TabBar.Item
-            icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg' }}
-            selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg' }}
+            icon={
+              <div style={{
+                width: '22px',
+                height: '22px',
+                background: 'url(../../images/profileBlack.svg) center center /  21px 21px no-repeat'
+              }}
+              />
+            }
+            selectedIcon={
+              <div style={{
+                width: '22px',
+                height: '22px',
+                background: 'url(../../images/profileBlue.svg) center center /  21px 21px no-repeat'
+              }}
+              />
+            }
             title="个人"
             key="my"
             selected={this.state.selectedTab === 'profileTab'}

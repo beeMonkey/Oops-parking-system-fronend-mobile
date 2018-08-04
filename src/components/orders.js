@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { NavBar, List} from 'antd-mobile';
+import { NavBar, List, Result } from 'antd-mobile';
 const Item = List.Item;
 const Brief = Item.Brief;
+const myImg = src => <img src={src} style={{width:"2rem",height:"2rem"}} alt="" />;
 class Orders extends Component {
     constructor(props) {
         super(props);
@@ -11,37 +12,43 @@ class Orders extends Component {
     componentWillMount() {
         this.props.onGetAllOrders();
     }
-    jump(id) {
+    jump(orderId) {
         //const { history } = this.props;
-        this.props.onPatchOrder(id);
-        // this.props.onGetAllOrders();
+        //Api.isBoyParkinglotsFull(id);
+         this.props.isBoyParkingLotsFull(orderId);
+         //this.props.onPatchOrder(id);
         //history.push("/home/parkUnparkTask")
     }
     render() {
-        const items = this.props.ordersList;
+        const items = this.props.ordersList
+        
         return (
             <div>
                 <NavBar
                     mode="dark"
                 >订单</NavBar>
-                {items.length>0 &&
+                {items.length > 0 &&
                     <List className="my-list">
                         {items.map(item => {
                             return <Item
                                 arrow="horizontal"
-                                thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
+                                thumb="../../images/carOrder.svg"
                                 multipleLine
                                 extra="抢单"
                                 onClick={() => { this.jump(item.id) }}
                             >
-                                订单{item.id} <Brief>{item.carId}，停车时间</Brief>
+                                订单{item.id} <Brief>{item.carId},{item.createdTime}</Brief>
                             </Item>
                         })}
                     </List>
                 }
-                {items.length===0 &&
-                    <p style={{marginTop:"60%",textAlign:"center",fontSize:"2rem"}}>暂无可抢订单</p>
-                }
+
+                {items.length === 0 &&
+                    <Result
+                        style={{ marginTop: "60%", textAlign: "center", fontSize: "2rem" }}
+                        img={myImg('https://gw.alipayobjects.com/zos/rmsportal/GIyMDJnuqmcqPLpHCSkj.svg')}
+                        title="暂无可抢订单"
+                    />}
             </div>
         );
     }
