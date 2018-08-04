@@ -49,8 +49,6 @@ class LoginForm extends Component {
         const { getFieldProps } = this.props.form;
         return (
             <div className="nav">
-
-                <NavBar mode="dark">登录</NavBar>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                     <p style={{ marginTop:"20%",color:"#108ee9",fontSize:"1.5rem" }}>欢迎登陆Oops停车系统</p>
 
