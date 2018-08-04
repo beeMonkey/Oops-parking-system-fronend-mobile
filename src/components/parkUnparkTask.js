@@ -26,7 +26,6 @@ class ParkUnparkTask extends Component {
 
     render() {
         const { history } = this.props;
-        console.log(this.props.ordersList)
         const parkList = this.props.ordersList.filter(order =>
             order.type == "存车" && order.status == "停取中" && order.parkinglotId == null
         )
@@ -68,7 +67,7 @@ class ParkUnparkTask extends Component {
                 <NavBar mode="dark">停取列表</NavBar>
                 <Tabs tabs={tabs}
                     initialPage={0}
-                    onChange={(tab, index) => { console.log('onChange', index, tab); }}
+                    onChange={(tab, index) => { this.props.onGetMyOrders() }}
                     onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
                 >
                     <div style={{  height: '100%', backgroundColor: '#fff' }}>

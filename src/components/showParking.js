@@ -19,7 +19,7 @@ class ShowParking extends Component {
         const parkinglotlist = this.props.parkinglots.map(lot => {
             return (
                 <Item
-                    arrow="horizontal"
+                    // arrow="horizontal"
                     thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
                     multipleLine
                 >
