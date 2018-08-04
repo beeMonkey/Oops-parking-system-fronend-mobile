@@ -18,6 +18,7 @@ export default {
             })
     },
     "getBoyOrders": (dispatch) => {
+        console.log("ggggg");
         axios.get(requestUrls.boyOrders)
             .then((res) => {
                 dispatch(actions.allOrders(res.data))
@@ -53,14 +54,17 @@ export default {
         console.log("lotId:"+lotId);
         axios.patch(`${requestUrls.orders}/${orderId}/park?parkingLotId=${lotId}`)
             .then(res=>{
+                console.log(res.data)
                 if(res.status == 200){
                     console.log(res.data)
-                    this.getBoyOrders(dispatch);
-                    this.getBoyParkinglots(dispatch);
+                    console.log(this)
+                    this.a.getBoyOrders(dispatch);
+                    this.a.getBoyParkinglots(dispatch);
 
                 }
             })
             .catch(error=>{
+                console.log(error)
             })
     },
     "unParkCar":(orderId,parkingLotId,dispatch)=> {
