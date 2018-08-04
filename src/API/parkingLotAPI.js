@@ -5,7 +5,6 @@ import {Toast} from 'antd-mobile';
 import Access_token from "../constants/Access_Token"
 import {Modal} from "antd-mobile/lib/index";
 axios.defaults.headers.common['authorization'] = Access_token;
-const boyId = 3
 const alert = Modal.alert;
 export default {
     "getAllOrders": (dispatch) => {
@@ -29,7 +28,7 @@ export default {
             })
     },
     "patchOrderStatus": (id, dispatch) => {
-        axios.patch(requestUrls.orders + "/" + id + "?boyId=" + boyId)
+        axios.patch(requestUrls.orders + "/" + id + "?boyId=" + localStorage.getItem("id"))
             .then((res) => {
                 Toast.success("抢单成功");
                 dispatch(actions.patchOrder(res.data))
