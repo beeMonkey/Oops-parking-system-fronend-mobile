@@ -2,6 +2,15 @@ import * as types from '../constants/ActionTypes'
 export default (state=[], action) => {
     switch (action.type) {
         case types.MODIFYPARKINGLOT:
+        {
+            let newState = [...state]
+            return newState.map(p=>{
+                if(p.id === action.parkinglotItem.id){
+                    return action.parkinglotItem
+                }
+                return p;
+            });
+        }
         case types.ADDPARKINGLOT:{
             let newState = [...state]
             return newState.map(p=>{
