@@ -4,6 +4,7 @@ import requestUrls from "./requestUrls"
 import {Toast} from 'antd-mobile';
 import Access_token from "../constants/Access_Token"
 import {Modal} from "antd-mobile/lib/index";
+
 axios.defaults.headers.common['authorization'] = Access_token;
 const alert = Modal.alert;
 export default {
@@ -39,24 +40,24 @@ export default {
     },
 
 
-    "getBoyParkinglots":(dispatch)=>
+    "getBoyParkinglots": (dispatch) =>
         axios.get(`${requestUrls.employees}/${localStorage.getItem("id")}/parkinglots`)
-            .then(res=>{
-                console.log("-------"+JSON.stringify(res))
+            .then(res => {
+                console.log("-------" + JSON.stringify(res))
                 dispatch(actions.allParkingLots(res.data))
             })
-            .catch(error=>{
+            .catch(error => {
                 Toast.fail("您没有停车场")
                 console.log(error)
             }),
 
-    "park":(orderId, lotId, dispatch)=>{
-        console.log("orderId:"+orderId);
-        console.log("lotId:"+lotId);
+    "park": (orderId, lotId, dispatch) => {
+        console.log("orderId:" + orderId);
+        console.log("lotId:" + lotId);
         axios.patch(`${requestUrls.orders}/${orderId}/park?parkingLotId=${lotId}`)
-            .then(res=>{
+            .then(res => {
                 console.log(res.data)
-                if(res.status == 200){
+                if (res.status == 200) {
                     console.log(res.data)
                     console.log(this)
                     this.a.getBoyOrders(dispatch);
@@ -64,27 +65,34 @@ export default {
 
                 }
             })
-            .catch(error=>{
+            .catch(error => {
                 console.log(error)
             })
     },
-    "unParkCar":(orderId,parkingLotId,dispatch)=> {
+    "unParkCar": (orderId, parkingLotId, dispatch) => {
         console.log(requestUrls.parkinglots + "/" + orderId + "/park/" + parkingLotId);
         axios.delete(requestUrls.parkinglots + "/" + orderId + "/park/" + parkingLotId)
             .then((res) => {
                 console.log(res.data);
-                axios.get(requestUrls.boyOrders)
-                    .then((res) => {
-                        dispatch(actions.allOrders(res.data))
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                        alert("取车失败")
-                    })
+                if (res.status == 204) {
+                    alert("取车成功")
+                    this.a.getBoyOrders(dispatch);
+                }
             })
             .catch((error) => {
                 console.log(error);
-                alert("取车失败")
+                if (error.status != 403) {
+                    alert("取车失败")
+                }
+            })
+    },
+    "GetFinishOrdersByBoyId":(dispatch)=>{
+        axios.get(`${requestUrls.orders}/complete/${localStorage.getItem("id")}`)
+            .then((res) => {
+                dispatch(actions.allOrders(res.data))
+            })
+            .catch((error) => {
+                console.log(error);
             })
     }
 }

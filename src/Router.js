@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Orders from "./container/ordersContainer"
 import ParkUnparkTask from "./container/parkUnparkContainer"
-import TheHistory from "./components/theHistory"
+import TheHistory from "./container/theHistoryContainer"
 import Profile from "./components/profile"
 import FinishPark from "./components/finishPark"
 import ChoosePark from "./container/chooseParkContrainer"
