@@ -4,9 +4,8 @@ import requestUrls from "./requestUrls"
 import {Toast} from 'antd-mobile';
 import Access_token from "../constants/Access_Token"
 import {Modal} from "antd-mobile/lib/index";
-
+const alert = Modal.alert
 axios.defaults.headers.common['authorization'] = Access_token;
-const boyId = 3
 export default {
     "getAllOrders": (dispatch) => {
         axios.defaults.headers.common['authorization'] = localStorage.getItem("access_token")
@@ -29,9 +28,9 @@ export default {
             })
     },
     "patchOrderStatus": (id, dispatch) => {
-        axios.patch(requestUrls.orders + "/" + id + "?boyId=" + boyId)
+        axios.patch(requestUrls.orders + "/" + id + "?boyId=" + localStorage.getItem("id"))
         .then((res) => {
-            Toast.success("抢单成功");
+            Toast.success("抢单成功",1);
             dispatch(actions.patchOrder(res.data))
         })
         .catch((error) => {
@@ -47,7 +46,7 @@ export default {
                 dispatch(actions.allParkingLots(res.data))
             })
             .catch(error => {
-                Toast.fail("您没有停车场")
+                Toast.fail("您没有停车场",1)
                 console.log(error)
             }),
 
@@ -90,27 +89,20 @@ export default {
         axios.get(`${requestUrls.orders}/complete/${localStorage.getItem("id")}`)
             .then((res) => {
                 dispatch(actions.allOrders(res.data))
-                axios.get(requestUrls.boyOrders)
-                    .then((res) => {
-                        dispatch(actions.allOrders(res.data))
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                    })
             })
             .catch((error) => {
                 console.log(error);
             })
     },
     "isBoyParkinglotsFull":(id,dispatch)=>
-        axios.get(requestUrls.isBoyParkinglotsFull)
+        axios.get(`${requestUrls.employees}/${localStorage.getItem("id")}/parkinglots/isFull`)
         .then(res=>{
             console.log("-------"+JSON.stringify(res))
             //this.patchOrderStatus(id,dispatch)
             this.a.patchOrderStatus(id,dispatch);
         })
         .catch(error=>{
-            Toast.success("停车场已满，无法抢单");
+            Toast.success("停车场已满，无法抢单",1);
             console.log(error)
         }),
 }

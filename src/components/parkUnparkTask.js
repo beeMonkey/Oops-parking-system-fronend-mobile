@@ -54,9 +54,9 @@ class ParkUnparkTask extends Component {
             multipleLine
             extra="详情"
             onClick={() =>
-                alert('Delete', '确定取车', [
-                    { text: 'Cancel', onPress: () => console.log('cancel') },
-                    { text: 'Ok', onPress: () => this.unParkCar(order.id,order.parkinglotId) },
+                alert('确定取车', '', [
+                    { text: '取消', onPress: () => console.log('cancel') },
+                    { text: '确定', onPress: () => this.unParkCar(order.id,order.parkinglotId) },
                 ])
             }
         >

@@ -19,7 +19,7 @@ class LoginForm extends Component {
         .then((res) => {
             console.log(res)
             if(res.status===200){
-                Toast.info('登录成功');
+                Toast.info('登录成功',1);
                 localStorage.setItem("access_token", res.data.token);
                 axios.defaults.headers.common['authorization'] = res.data.token;
                 localStorage.setItem("id", res.data.id);
