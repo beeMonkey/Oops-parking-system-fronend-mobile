@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { NavBar, List} from 'antd-mobile';
+import { NavBar, List, Result } from 'antd-mobile';
 const Item = List.Item;
 const Brief = Item.Brief;
+const myImg = src => <img src={src} style={{width:"2rem",height:"2rem"}} alt="" />;
 class Orders extends Component {
     constructor(props) {
         super(props);
@@ -12,10 +13,7 @@ class Orders extends Component {
         this.props.onGetAllOrders();
     }
     jump(id) {
-        //const { history } = this.props;
         this.props.onPatchOrder(id);
-        // this.props.onGetAllOrders();
-        //history.push("/home/parkUnparkTask")
     }
     render() {
         const items = this.props.ordersList;
@@ -24,7 +22,7 @@ class Orders extends Component {
                 <NavBar
                     mode="dark"
                 >订单</NavBar>
-                {items.length>0 &&
+                {items.length > 0 &&
                     <List className="my-list">
                         {items.map(item => {
                             return <Item
@@ -39,9 +37,13 @@ class Orders extends Component {
                         })}
                     </List>
                 }
-                {items.length===0 &&
-                    <p style={{marginTop:"60%",textAlign:"center",fontSize:"2rem"}}>暂无可抢订单</p>
-                }
+
+                {items.length === 0 &&
+                    <Result
+                        style={{ marginTop: "60%", textAlign: "center", fontSize: "2rem" }}
+                        img={myImg('https://gw.alipayobjects.com/zos/rmsportal/GIyMDJnuqmcqPLpHCSkj.svg')}
+                        title="暂无可抢订单"
+                    />}
             </div>
         );
     }

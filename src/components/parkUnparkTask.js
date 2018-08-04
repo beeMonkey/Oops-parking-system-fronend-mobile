@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
-import { NavBar, List,Modal } from 'antd-mobile';
+import { NavBar, List, Modal, Tabs } from 'antd-mobile';
 const Item = List.Item;
 const Brief = Item.Brief;
 const alert = Modal.alert;
+const tabs = [
+    { title: "停车列表" },
+    { title: "取车列表" }
+];
+
 class ParkUnparkTask extends Component {
     constructor(props) {
         super(props);
@@ -10,39 +15,39 @@ class ParkUnparkTask extends Component {
         }
     }
 
-    componentWillMount(){
+    componentWillMount() {
         this.props.onGetMyOrders();
     }
-    unParkCar = (orderId,parkingLotId) => {
+    unParkCar = (orderId, parkingLotId) => {
         console.log(orderId)
         console.log(parkingLotId)
-        this.props.unParkCar(orderId,parkingLotId);
+        this.props.unParkCar(orderId, parkingLotId);
     }
 
     render() {
         const { history } = this.props;
         console.log(this.props.ordersList)
-        const parkList = this.props.ordersList.filter(order=>
-            order.type == "存车" && order.status=="停取中"&& order.parkinglotId==null
+        const parkList = this.props.ordersList.filter(order =>
+            order.type == "存车" && order.status == "停取中" && order.parkinglotId == null
         )
-            .map(order=>{
+            .map(order => {
                 return (<Item
                     id={order.id}
                     arrow="horizontal"
                     thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
                     multipleLine
                     extra="详情"
-                    onClick={() => {history.push(`/home/finishPark/${order.id}` ) }}
+                    onClick={() => { history.push(`/home/finishPark/${order.id}`) }}
                 >
                     停车<Brief>{order.carId},{order.createdTime}</Brief>
 
                 </Item>)
             });
 
-        const unParkList = this.props.ordersList.filter(order=>
-            order.type == "取车"&& order.status=="停取中"
+        const unParkList = this.props.ordersList.filter(order =>
+            order.type == "取车" && order.status == "停取中"
         )
-            .map(order=>{
+            .map(order => {
                 return (<Item
                     id={order.id}
                     arrow="horizontal"
@@ -52,7 +57,7 @@ class ParkUnparkTask extends Component {
                     onClick={() =>
                         alert('', '确定取车', [
                             { text: '取消', onPress: () => console.log('cancel') },
-                            { text: '确定', onPress: () => this.unParkCar(order.id,order.parkinglotId) },
+                            { text: '确定', onPress: () => this.unParkCar(order.id, order.parkinglotId) },
                         ])
                     }
                 >
@@ -62,10 +67,26 @@ class ParkUnparkTask extends Component {
         return (
             <div>
                 <NavBar mode="dark">停取列表</NavBar>
-                <List className="my-list">
-                    {parkList}
-                    {unParkList}
-                </List>
+                <Tabs tabs={tabs}
+                    initialPage={0}
+                    onChange={(tab, index) => { console.log('onChange', index, tab); }}
+                    onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
+                >
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', backgroundColor: '#fff' }}>
+                        <List className="my-list">
+                            {parkList}
+
+                        </List>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', backgroundColor: '#fff' }}>
+                        <List className="my-list">
+                            {unParkList}
+                        </List>
+                    </div>
+
+                </Tabs>
+
+
             </div>
         );
     }
