@@ -71,13 +71,13 @@ class ParkUnparkTask extends Component {
                     onChange={(tab, index) => { console.log('onChange', index, tab); }}
                     onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
                 >
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', backgroundColor: '#fff' }}>
+                    <div style={{  height: '100%', backgroundColor: '#fff' }}>
                         <List className="my-list">
                             {parkList}
 
                         </List>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', backgroundColor: '#fff' }}>
+                    <div style={{  height: '100%', backgroundColor: '#fff' }}>
                         <List className="my-list">
                             {unParkList}
                         </List>
