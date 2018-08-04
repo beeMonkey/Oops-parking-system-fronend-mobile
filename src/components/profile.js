@@ -25,7 +25,7 @@ class Profile extends Component {
                     localStorage.removeItem("access_token")
                     this.props.history.push("/login")
                 }
-            },
+            }, 
         ])
     }
 
