@@ -20,8 +20,7 @@ export default {
             })
     },
     "getBoyOrders": (dispatch) => {
-        console.log("ggggg");
-        axios.get(requestUrls.boyOrders)
+        axios.get(`${requestUrls.orders}/${localStorage.getItem("id")}`)
             .then((res) => {
                 dispatch(actions.allOrders(res.data))
             })
@@ -42,12 +41,13 @@ export default {
 
 
     "getBoyParkinglots":(dispatch)=>
-        axios.get(requestUrls.boyParkingLots)
+        axios.get(`${requestUrls.employees}/${localStorage.getItem("id")}/parkinglots`)
             .then(res=>{
                 console.log("-------"+JSON.stringify(res))
                 dispatch(actions.allParkingLots(res.data))
             })
             .catch(error=>{
+                Toast.fail("您没有停车场")
                 console.log(error)
             }),
 
