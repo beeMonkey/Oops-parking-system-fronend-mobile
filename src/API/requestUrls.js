@@ -8,5 +8,4 @@ export default {
     "parkingLotCombineSearch":globalUrl+"parkinglots/combineSearch",
     "nohandleOrders":globalUrl + "orders/nohandle",
     "orders":globalUrl + "orders",
-    "boyOrders":globalUrl+ "orders/"+localStorage.getItem("id"),
 }

@@ -19,7 +19,7 @@ export default {
             })
     },
     "getBoyOrders": (dispatch) => {
-        axios.get(requestUrls.boyOrders)
+        axios.get(`${requestUrls.orders}/${localStorage.getItem("id")}`)
             .then((res) => {
                 dispatch(actions.allOrders(res.data))
             })
