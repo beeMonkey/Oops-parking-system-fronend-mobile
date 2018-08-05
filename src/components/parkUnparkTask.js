@@ -35,10 +35,10 @@ class ParkUnparkTask extends Component {
             arrow="horizontal"
             thumb="../../images/parkCar.svg"
             multipleLine
-            extra="详情"
+            extra="选择停车场"
             onClick={() => {history.push(`/home/finishPark/${order.id}` ) }}
         >
-            {order.carId}<Brief>停车时间</Brief>
+            {order.carId}<Brief>{order.createdTime}</Brief>
         </Item>)
         });
 
@@ -48,10 +48,9 @@ class ParkUnparkTask extends Component {
         .map(order=>{
             return (<Item
             id={order.id}
-            arrow="horizontal"
             thumb="../../images/unparkCar.svg"
             multipleLine
-            extra="详情"
+            extra=""
             onClick={() =>
                 alert('确定取车', '', [
                     { text: '取消', onPress: () => console.log('cancel') },
@@ -59,7 +58,7 @@ class ParkUnparkTask extends Component {
                 ])
             }
         >
-            取车 <Brief>{order.carId}，停车时间</Brief>
+            取车 <Brief>{order.carId},{order.createdTime}</Brief>
         </Item>)
         });
         return (

@@ -23,6 +23,8 @@ class Profile extends Component {
             {
                 text: '确认', onPress: () => {
                     localStorage.removeItem("access_token")
+                    localStorage.removeItem("id")
+                    localStorage.removeItem("userInfo")
                     this.props.history.push("/login")
                 }
             }, 
